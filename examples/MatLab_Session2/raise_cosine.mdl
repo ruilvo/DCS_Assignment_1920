@@ -1,0 +1,860 @@
+Model {
+  Name			  "raise_cosine"
+  Version		  7.9
+  MdlSubVersion		  0
+  GraphicalInterface {
+    NumRootInports	    0
+    NumRootOutports	    0
+    ParameterArgumentNames  ""
+    ComputedModelVersion    "1.6"
+    NumModelReferences	    0
+    NumTestPointedSignals   0
+  }
+  SavedCharacterEncoding  "windows-1252"
+  SaveDefaultBlockParams  on
+  ScopeRefreshTime	  0.035000
+  OverrideScopeRefreshTime on
+  DisableAllScopes	  off
+  DataTypeOverride	  "UseLocalSettings"
+  DataTypeOverrideAppliesTo "AllNumericTypes"
+  MinMaxOverflowLogging	  "UseLocalSettings"
+  MinMaxOverflowArchiveMode "Overwrite"
+  FPTRunName		  "Run 1"
+  MaxMDLFileLineLength	  120
+  Created		  "Fri Nov 28 10:08:03 2008"
+  Creator		  "amoura"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "amoura_2"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Wed Nov 21 18:18:55 2012"
+  RTWModifiedTimeStamp	  275422497
+  ModelVersionFormat	  "1.%<AutoIncrement:6>"
+  ConfigurationManager	  "None"
+  SampleTimeColors	  off
+  SampleTimeAnnotations	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  on
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowDesignRanges	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ShowTestPointIcons	  on
+  ShowSignalResolutionIcons on
+  ShowViewerIcons	  on
+  SortedOrder		  off
+  ExecutionContextIcon	  off
+  ShowLinearizationAnnotations on
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  SimulationMode	  "normal"
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  ExtModeBatchMode	  off
+  ExtModeEnableFloating	  on
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigDurationFloating "auto"
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock on
+  BufferReuse		  on
+  ShowModelReferenceBlockVersion off
+  ShowModelReferenceBlockIO off
+  Array {
+    Type		    "Handle"
+    Dimension		    1
+    Simulink.ConfigSet {
+      $ObjectID		      1
+      Version		      "1.12.0"
+      Array {
+	Type			"Handle"
+	Dimension		8
+	Simulink.SolverCC {
+	  $ObjectID		  2
+	  Version		  "1.12.0"
+	  StartTime		  "0.0"
+	  StopTime		  "100e-3"
+	  AbsTol		  "1e-6"
+	  FixedStep		  "1/100000"
+	  InitialStep		  "auto"
+	  MaxNumMinSteps	  "-1"
+	  MaxOrder		  5
+	  ZcThreshold		  "auto"
+	  ConsecutiveZCsStepRelTol "10*128*eps"
+	  MaxConsecutiveZCs	  "1000"
+	  ExtrapolationOrder	  4
+	  NumberNewtonIterations  1
+	  MaxStep		  "auto"
+	  MinStep		  "auto"
+	  MaxConsecutiveMinStep	  "1"
+	  RelTol		  "1e-3"
+	  SolverMode		  "SingleTasking"
+	  EnableConcurrentExecution off
+	  ConcurrentTasks	  off
+	  Solver		  "FixedStepDiscrete"
+	  SolverName		  "FixedStepDiscrete"
+	  SolverJacobianMethodControl "auto"
+	  ShapePreserveControl	  "DisableAll"
+	  ZeroCrossControl	  "UseLocalSettings"
+	  ZeroCrossAlgorithm	  "Nonadaptive"
+	  AlgebraicLoopSolver	  "TrustRegion"
+	  SolverResetMethod	  "Fast"
+	  PositivePriorityOrder	  off
+	  AutoInsertRateTranBlk	  off
+	  SampleTimeConstraint	  "Unconstrained"
+	  InsertRTBMode		  "Whenever possible"
+	}
+	Simulink.DataIOCC {
+	  $ObjectID		  3
+	  Version		  "1.12.0"
+	  Decimation		  "1"
+	  ExternalInput		  "[t, u]"
+	  FinalStateName	  "xFinal"
+	  InitialState		  "xInitial"
+	  LimitDataPoints	  off
+	  MaxDataPoints		  "1000"
+	  LoadExternalInput	  off
+	  LoadInitialState	  off
+	  SaveFinalState	  off
+	  SaveCompleteFinalSimState off
+	  SaveFormat		  "Array"
+	  SignalLoggingSaveFormat "ModelDataLogs"
+	  SaveOutput		  on
+	  SaveState		  off
+	  SignalLogging		  on
+	  DSMLogging		  on
+	  InspectSignalLogs	  off
+	  SaveTime		  on
+	  ReturnWorkspaceOutputs  off
+	  StateSaveName		  "xout"
+	  TimeSaveName		  "tout"
+	  OutputSaveName	  "yout"
+	  SignalLoggingName	  "sigsOut"
+	  DSMLoggingName	  "dsmout"
+	  OutputOption		  "RefineOutputTimes"
+	  OutputTimes		  "[]"
+	  ReturnWorkspaceOutputsName "out"
+	  Refine		  "1"
+	}
+	Simulink.OptimizationCC {
+	  $ObjectID		  4
+	  Version		  "1.12.0"
+	  BlockReduction	  on
+	  BooleanDataType	  off
+	  ConditionallyExecuteInputs on
+	  InlineParams		  off
+	  UseIntDivNetSlope	  off
+	  UseFloatMulNetSlope	  off
+	  UseSpecifiedMinMax	  off
+	  InlineInvariantSignals  off
+	  OptimizeBlockIOStorage  on
+	  BufferReuse		  on
+	  EnhancedBackFolding	  off
+	  StrengthReduction	  off
+	  ExpressionFolding	  on
+	  BooleansAsBitfields	  off
+	  BitfieldContainerType	  "uint_T"
+	  EnableMemcpy		  on
+	  MemcpyThreshold	  64
+	  PassReuseOutputArgsAs	  "Structure reference"
+	  ExpressionDepthLimit	  2147483647
+	  FoldNonRolledExpr	  on
+	  LocalBlockOutputs	  on
+	  RollThreshold		  5
+	  SystemCodeInlineAuto	  off
+	  StateBitsets		  off
+	  DataBitsets		  off
+	  UseTempVars		  off
+	  ZeroExternalMemoryAtStartup on
+	  ZeroInternalMemoryAtStartup on
+	  InitFltsAndDblsToZero	  on
+	  NoFixptDivByZeroProtection off
+	  EfficientFloat2IntCast  off
+	  EfficientMapNaN2IntZero on
+	  OptimizeModelRefInitCode off
+	  LifeSpan		  "inf"
+	  MaxStackSize		  "Inherit from target"
+	  BufferReusableBoundary  on
+	  SimCompilerOptimization "Off"
+	  AccelVerboseBuild	  off
+	  ParallelExecutionInRapidAccelerator on
+	}
+	Simulink.DebuggingCC {
+	  $ObjectID		  5
+	  Version		  "1.12.0"
+	  RTPrefix		  "error"
+	  ConsistencyChecking	  "none"
+	  ArrayBoundsChecking	  "none"
+	  SignalInfNanChecking	  "none"
+	  SignalRangeChecking	  "none"
+	  ReadBeforeWriteMsg	  "UseLocalSettings"
+	  WriteAfterWriteMsg	  "UseLocalSettings"
+	  WriteAfterReadMsg	  "UseLocalSettings"
+	  AlgebraicLoopMsg	  "warning"
+	  ArtificialAlgebraicLoopMsg "warning"
+	  SaveWithDisabledLinksMsg "warning"
+	  SaveWithParameterizedLinksMsg	"none"
+	  CheckSSInitialOutputMsg on
+	  UnderspecifiedInitializationDetection	"Classic"
+	  MergeDetectMultiDrivingBlocksExec "none"
+	  CheckExecutionContextPreStartOutputMsg off
+	  CheckExecutionContextRuntimeOutputMsg	off
+	  SignalResolutionControl "TryResolveAllWithWarning"
+	  BlockPriorityViolationMsg "warning"
+	  MinStepSizeMsg	  "warning"
+	  TimeAdjustmentMsg	  "none"
+	  MaxConsecutiveZCsMsg	  "error"
+	  MaskedZcDiagnostic	  "warning"
+	  IgnoredZcDiagnostic	  "warning"
+	  SolverPrmCheckMsg	  "none"
+	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
+	  MultiTaskDSMMsg	  "warning"
+	  MultiTaskCondExecSysMsg "none"
+	  MultiTaskRateTransMsg	  "error"
+	  SingleTaskRateTransMsg  "none"
+	  TasksWithSamePriorityMsg "warning"
+	  SigSpecEnsureSampleTimeMsg "warning"
+	  CheckMatrixSingularityMsg "none"
+	  IntegerOverflowMsg	  "warning"
+	  Int32ToFloatConvMsg	  "warning"
+	  ParameterDowncastMsg	  "error"
+	  ParameterOverflowMsg	  "error"
+	  ParameterUnderflowMsg	  "none"
+	  ParameterPrecisionLossMsg "warning"
+	  ParameterTunabilityLossMsg "warning"
+	  FixptConstUnderflowMsg  "none"
+	  FixptConstOverflowMsg	  "none"
+	  FixptConstPrecisionLossMsg "none"
+	  UnderSpecifiedDataTypeMsg "none"
+	  UnnecessaryDatatypeConvMsg "none"
+	  VectorMatrixConversionMsg "none"
+	  InvalidFcnCallConnMsg	  "error"
+	  FcnCallInpInsideContextMsg "Use local settings"
+	  SignalLabelMismatchMsg  "none"
+	  UnconnectedInputMsg	  "warning"
+	  UnconnectedOutputMsg	  "warning"
+	  UnconnectedLineMsg	  "warning"
+	  SFcnCompatibilityMsg	  "none"
+	  FrameProcessingCompatibilityMsg "warning"
+	  UniqueDataStoreMsg	  "none"
+	  BusObjectLabelMismatch  "warning"
+	  RootOutportRequireBusObject "warning"
+	  AssertControl		  "UseLocalSettings"
+	  EnableOverflowDetection off
+	  ModelReferenceIOMsg	  "none"
+	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
+	  ModelReferenceVersionMismatchMessage "none"
+	  ModelReferenceIOMismatchMessage "none"
+	  ModelReferenceCSMismatchMessage "none"
+	  UnknownTsInhSupMsg	  "warning"
+	  ModelReferenceDataLoggingMessage "warning"
+	  ModelReferenceSymbolNameMessage "warning"
+	  ModelReferenceExtraNoncontSigs "error"
+	  StateNameClashWarn	  "warning"
+	  SimStateInterfaceChecksumMismatchMsg "warning"
+	  SimStateOlderReleaseMsg "error"
+	  InitInArrayFormatMsg	  "warning"
+	  StrictBusMsg		  "None"
+	  BusNameAdapt		  "WarnAndRepair"
+	  NonBusSignalsTreatedAsBus "none"
+	  LoggingUnavailableSignals "error"
+	  BlockIODiagnostic	  "none"
+	  SFUnusedDataAndEventsDiag "warning"
+	  SFUnexpectedBacktrackingDiag "warning"
+	  SFInvalidInputDataAccessInChartInitDiag "warning"
+	  SFNoUnconditionalDefaultTransitionDiag "warning"
+	  SFTransitionOutsideNaturalParentDiag "warning"
+	  SFUnconditionalTransitionShadowingDiag "warning"
+	}
+	Simulink.HardwareCC {
+	  $ObjectID		  6
+	  Version		  "1.12.0"
+	  ProdBitPerChar	  8
+	  ProdBitPerShort	  16
+	  ProdBitPerInt		  32
+	  ProdBitPerLong	  32
+	  ProdBitPerFloat	  32
+	  ProdBitPerDouble	  64
+	  ProdBitPerPointer	  32
+	  ProdLargestAtomicInteger "Char"
+	  ProdLargestAtomicFloat  "None"
+	  ProdIntDivRoundTo	  "Undefined"
+	  ProdEndianess		  "Unspecified"
+	  ProdWordSize		  32
+	  ProdShiftRightIntArith  on
+	  ProdHWDeviceType	  "32-bit Generic"
+	  TargetBitPerChar	  8
+	  TargetBitPerShort	  16
+	  TargetBitPerInt	  32
+	  TargetBitPerLong	  32
+	  TargetBitPerFloat	  32
+	  TargetBitPerDouble	  64
+	  TargetBitPerPointer	  32
+	  TargetLargestAtomicInteger "Char"
+	  TargetLargestAtomicFloat "None"
+	  TargetShiftRightIntArith on
+	  TargetIntDivRoundTo	  "Undefined"
+	  TargetEndianess	  "Unspecified"
+	  TargetWordSize	  32
+	  TargetTypeEmulationWarnSuppressLevel 0
+	  TargetPreprocMaxBitsSint 32
+	  TargetPreprocMaxBitsUint 32
+	  TargetHWDeviceType	  "Specified"
+	  TargetUnknown		  on
+	  ProdEqTarget		  on
+	}
+	Simulink.ModelReferenceCC {
+	  $ObjectID		  7
+	  Version		  "1.12.0"
+	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
+	  CheckModelReferenceTargetMessage "error"
+	  EnableParallelModelReferenceBuilds off
+	  ParallelModelReferenceErrorOnInvalidPool on
+	  ParallelModelReferenceMATLABWorkerInit "None"
+	  ModelReferenceNumInstancesAllowed "Multi"
+	  PropagateVarSize	  "Infer from blocks in model"
+	  ModelReferencePassRootInputsByReference on
+	  ModelReferenceMinAlgLoopOccurrences off
+	  PropagateSignalLabelsOutOfModel off
+	  SupportModelReferenceSimTargetCustomCode off
+	}
+	Simulink.SFSimCC {
+	  $ObjectID		  8
+	  Version		  "1.12.0"
+	  SFSimEnableDebug	  on
+	  SFSimOverflowDetection  on
+	  SFSimEcho		  on
+	  SimBlas		  on
+	  SimCtrlC		  on
+	  SimExtrinsic		  on
+	  SimIntegrity		  on
+	  SimUseLocalCustomCode	  off
+	  SimParseCustomCode	  on
+	  SimBuildMode		  "sf_incremental_build"
+	}
+	Simulink.RTWCC {
+	  $BackupClass		  "Simulink.RTWCC"
+	  $ObjectID		  9
+	  Version		  "1.12.0"
+	  SystemTargetFile	  "grt.tlc"
+	  GenCodeOnly		  off
+	  MakeCommand		  "make_rtw"
+	  GenerateMakefile	  on
+	  TemplateMakefile	  "grt_unix.tmf"
+	  GenerateReport	  off
+	  SaveLog		  off
+	  RTWVerbose		  on
+	  RetainRTWFile		  off
+	  ProfileTLC		  off
+	  TLCDebug		  off
+	  TLCCoverage		  off
+	  TLCAssert		  off
+	  ProcessScriptMode	  "Default"
+	  ConfigurationMode	  "Optimized"
+	  ConfigAtBuild		  off
+	  RTWUseLocalCustomCode	  off
+	  RTWUseSimCustomCode	  off
+	  IncludeHyperlinkInReport off
+	  LaunchReport		  off
+	  TargetLang		  "C"
+	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
+	  IncludeERTFirstTime	  on
+	  GenerateTraceInfo	  off
+	  GenerateTraceReport	  off
+	  GenerateTraceReportSl	  off
+	  GenerateTraceReportSf	  off
+	  GenerateTraceReportEml  off
+	  GenerateCodeInfo	  off
+	  GenerateWebview	  off
+	  GenerateCodeMetricsReport off
+	  GenerateCodeReplacementReport	off
+	  RTWCompilerOptimization "Off"
+	  CheckMdlBeforeBuild	  "Off"
+	  CustomRebuildMode	  "OnUpdate"
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    2
+	    Simulink.CodeAppCC {
+	      $ObjectID		      10
+	      Version		      "1.12.0"
+	      ForceParamTrailComments off
+	      GenerateComments	      on
+	      IgnoreCustomStorageClasses on
+	      IgnoreTestpoints	      off
+	      IncHierarchyInIds	      off
+	      MaxIdLength	      31
+	      PreserveName	      off
+	      PreserveNameWithParent  off
+	      ShowEliminatedStatement off
+	      IncAutoGenComments      off
+	      SimulinkDataObjDesc     off
+	      SFDataObjDesc	      off
+	      MATLABFcnDesc	      off
+	      IncDataTypeInIds	      off
+	      MangleLength	      1
+	      CustomSymbolStrGlobalVar "$R$N$M"
+	      CustomSymbolStrType     "$N$R$M"
+	      CustomSymbolStrField    "$N$M"
+	      CustomSymbolStrFcn      "$R$N$M$F"
+	      CustomSymbolStrFcnArg   "rt$I$N$M"
+	      CustomSymbolStrBlkIO    "rtb_$N$M"
+	      CustomSymbolStrTmpVar   "$N$M"
+	      CustomSymbolStrMacro    "$R$N$M"
+	      DefineNamingRule	      "None"
+	      ParamNamingRule	      "None"
+	      SignalNamingRule	      "None"
+	      InsertBlockDesc	      off
+	      InsertPolySpaceComments off
+	      SimulinkBlockComments   on
+	      MATLABSourceComments    off
+	      EnableCustomComments    off
+	      InlinedPrmAccess	      "Literals"
+	      ReqsInCode	      off
+	      UseSimReservedNames     off
+	    }
+	    Simulink.GRTTargetCC {
+	      $BackupClass	      "Simulink.TargetCC"
+	      $ObjectID		      11
+	      Version		      "1.12.0"
+	      TargetFcnLib	      "ansi_tfl_tmw.mat"
+	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
+	      CodeReplacementLibrary  "ANSI_C"
+	      UtilityFuncGeneration   "Auto"
+	      ERTMultiwordTypeDef     "System defined"
+	      CodeExecutionProfiling  off
+	      ERTMultiwordLength      256
+	      MultiwordLength	      2048
+	      GenerateFullHeader      on
+	      GenerateSampleERTMain   off
+	      GenerateTestInterfaces  off
+	      IsPILTarget	      off
+	      ModelReferenceCompliant off
+	      ParMdlRefBuildCompliant on
+	      CompOptLevelCompliant   on
+	      ConcurrentExecutionCompliant on
+	      IncludeMdlTerminateFcn  on
+	      GeneratePreprocessorConditionals "Disable all"
+	      CombineOutputUpdateFcns off
+	      CombineSignalStateStructs	off
+	      SuppressErrorStatus     off
+	      ERTFirstTimeCompliant   off
+	      IncludeFileDelimiter    "Auto"
+	      ERTCustomFileBanners    off
+	      SupportAbsoluteTime     on
+	      LogVarNameModifier      "rt_"
+	      MatFileLogging	      off
+	      MultiInstanceERTCode    off
+	      SupportNonFinite	      on
+	      SupportComplex	      on
+	      PurelyIntegerCode	      off
+	      SupportContinuousTime   on
+	      SupportNonInlinedSFcns  on
+	      SupportVariableSizeSignals off
+	      EnableShiftOperators    on
+	      ParenthesesLevel	      "Nominal"
+	      PortableWordSizes	      off
+	      ModelStepFunctionPrototypeControlCompliant off
+	      CPPClassGenCompliant    off
+	      AutosarCompliant	      off
+	      GRTInterface	      on
+	      UseMalloc		      off
+	      ExtMode		      off
+	      ExtModeStaticAlloc      off
+	      ExtModeTesting	      off
+	      ExtModeStaticAllocSize  1000000
+	      ExtModeTransport	      0
+	      ExtModeMexFile	      "ext_comm"
+	      ExtModeIntrfLevel	      "Level1"
+	      RTWCAPISignals	      off
+	      RTWCAPIParams	      off
+	      RTWCAPIStates	      off
+	      RTWCAPIRootIO	      off
+	      GenerateASAP2	      off
+	    }
+	    PropName		    "Components"
+	  }
+	}
+	PropName		"Components"
+      }
+      Name		      "Configuration"
+      CurrentDlgPage	      "Solver"
+      ConfigPrmDlgPosition     [ 243, 69, 1123, 699 ] 
+    }
+    PropName		    "ConfigurationSets"
+  }
+  Simulink.ConfigSet {
+    $PropName		    "ActiveConfigurationSet"
+    $ObjectID		    1
+  }
+  ExplicitPartitioning	  off
+  BlockDefaults {
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+    BlockRotation	    0
+    BlockMirror		    off
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    UseDisplayTextAsClickCallback off
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      Scope
+      ModelBased	      off
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "-5"
+      YMax		      "5"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      DataFormat	      "Array"
+      LimitDataPoints	      on
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ZeroOrderHold
+      SampleTime	      "1"
+    }
+  }
+  System {
+    Name		    "raise_cosine"
+    Location		    [112, 82, 626, 326]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.196850, 0.196850, 0.196850, 0.196850]
+    TiledPageScale	    1
+    ShowPageBoundaries	    off
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    SIDHighWatermark	    "7"
+    Block {
+      BlockType		      Reference
+      Name		      "Raised Cosine\nReceive Filter"
+      SID		      "1"
+      Ports		      [1, 1]
+      Position		      [200, 78, 280, 122]
+      LibraryVersion	      "1.600"
+      UserDataPersistent      on
+      UserData		      "DataTag0"
+      SourceBlock	      "commfilt2/Raised Cosine\nReceive Filter"
+      SourceType	      "Raised Cosine Receive Filter"
+      filtType		      "Normal"
+      N			      "100"
+      D			      "6"
+      R			      "0"
+      sampMode		      "Mute"
+      saveAsFlag	      "0"
+      rateMode		      "None"
+      downFactor	      "8"
+      downOffset	      "0"
+      framing		      "Allow multirate processing"
+      InputProcessing	      "Inherited (this choice will be removed - see release notes)"
+      checkGain		      "User-specified"
+      filterGain	      "1/100"
+      checkCoeff	      off
+      variableName	      "rcRxFilt"
+      launchFVT		      off
+      roundingMode	      "Floor"
+      overflowMode	      off
+      coeffMode		      "Same word length as input"
+      coeffWordLength	      "16"
+      coeffFracLength	      "15"
+      prodOutputMode	      "Same as input"
+      prodOutputWordLength    "32"
+      prodOutputFracLength    "30"
+      accumMode		      "Same as product output"
+      accumWordLength	      "32"
+      accumFracLength	      "30"
+      outputMode	      "Same as accumulator"
+      outputWordLength	      "16"
+      outputFracLength	      "15"
+      LockScale		      off
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope1"
+      SID		      "2"
+      Ports		      [1]
+      Position		      [340, 85, 370, 115]
+      Floating		      off
+      Location		      [459, 281, 1265, 592]
+      Open		      on
+      NumInputPorts	      "1"
+      TickLabels	      "on"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      LimitDataPoints	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Signal From\nWorkspace1"
+      SID		      "7"
+      Ports		      [0, 1]
+      Position		      [25, 163, 80, 197]
+      LibraryVersion	      "1.725"
+      SourceBlock	      "dspsrcs4/Signal From\nWorkspace"
+      SourceType	      "Signal From Workspace"
+      X			      "randi([0 1],1000,1)"
+      Ts		      "1/1000"
+      nsamps		      "1"
+      OutputAfterFinalValue   "Cyclic repetition"
+      ignoreOrWarnInputAndFrameLengths off
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Signal From\nWorkspace3"
+      SID		      "6"
+      Ports		      [0, 1]
+      Position		      [25, 83, 80, 117]
+      LibraryVersion	      "1.725"
+      SourceBlock	      "dspsrcs4/Signal From\nWorkspace"
+      SourceType	      "Signal From Workspace"
+      X			      "[0 0 0 0 0 1 0 0 0 0 0 ]"
+      Ts		      "1/1000"
+      nsamps		      "1"
+      OutputAfterFinalValue   "Cyclic repetition"
+      ignoreOrWarnInputAndFrameLengths off
+    }
+    Block {
+      BlockType		      ZeroOrderHold
+      Name		      "Zero-Order\nHold\n(sampler)1"
+      SID		      "5"
+      Position		      [105, 85, 135, 115]
+      SampleTime	      "1/100000"
+    }
+    Line {
+      SrcBlock		      "Signal From\nWorkspace3"
+      SrcPort		      1
+      DstBlock		      "Zero-Order\nHold\n(sampler)1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Raised Cosine\nReceive Filter"
+      SrcPort		      1
+      DstBlock		      "Scope1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Zero-Order\nHold\n(sampler)1"
+      SrcPort		      1
+      DstBlock		      "Raised Cosine\nReceive Filter"
+      DstPort		      1
+    }
+  }
+}
+MatData {
+  NumRecords		  1
+  DataRecord {
+    Tag			    DataTag0
+    Data		    "  %)30     .    \\\"8   8    (     @         %    \"     $    !     0         %  0 %@    $   !\"    :&%"
+    "S26YH97)I=&5D3W!T:6]N     &9I;'1E<D-O;G-T<G5C=&]R      !F:6QT97)#;VYS=')U8W1O<D%R9W,         #@   #     &    \"   "
+    "  D\"        !0    @    !     0    $          @ !  $    .    0     8    (    !          %    \"     $    +     0  "
+    "       0    \"P   &1F:6QT+F1F9FER       .    Z\"4   8    (     0         %    \"     $    !     0         .    N\""
+    "4   8    (    !@         %    \"     $   \"Q!    0         )    B\"4  \"HF)CMPPQR\\QO-&^*> \\;X$@S(J[X4!OY8_N_Z@3@"
+    "J_R?$_)1N,$;]\\1\"CB// 5O],E[DF:4AJ_D#6L;A>R'K^9Z783S(8AOR@!$RH LB._*2ZO%!K:);\\V=P8YC/XGOY/4?VS)'BJ_,0FF%T4Z++\\G"
+    "Y)A9<U NOXB7MY5D,#\"_-D7 05XU,;]]/T<\\XC8ROQC^8;*L-#._@D=!A'HN-+].37I6\"20UO_/Q+:,7%3:_;N0)RV0!-[\\R2!\\FL>@WOPZ@B"
+    "A2^RCB_2,+H#DZG.;^0G92V)'XZO\\>GJ>4&3SN_EM3&OKH9/+\\; 8Z\\!]X\\O_70V\\\"VFSV_\" &T(Y)2/K_N2=[!90(_OS'Y+PO_JC^_Y#P_"
+    "B!8F0+\\$BYM(X') OVTI3 3&NT\"_^JE$W;$ 0;\\TZ07@CD%!OQ^@H@E)?D&_9N>-3<VV0;^8$#*;\">M!OQI(3N/L&D*_ GX9'6=&0K]M(2E+:6"
+    "U\"OU1'&H#ECT*_4^3[XLZM0K^4S7BS&<=\"OT)%P$V[VT*_R.0K+JKK0K_#QJ'TW?9\"O^'AL6=/_4*_&Y9M=_C^0K]V??@_U/M\"OT>BT0O?\\T*"
+    "_5$W451;G0K]3K^_*>-5\"OTVZE$L&OT*_$I'9[+^C0K_B U+YIX-\"OQVDG/'!7D*_ZPFDC!(U0K]/^9.WGP9\"OPLF@I5PTT&_MFC*?HV;0;^B2!"
+    "X  %]!OT/21]G2'4&_NL*?^Q'80+^&)3>(RHU OR*2M,T*/T\"_/YC*B\\37/[\\),@4FPR@_OT%F5_DT<3Z_X*4IV3^Q/;^;MM?5\"^D\\OY>+YC3"
+    "#&#R_[0.H:)) .[]D$TX'J& ZO]?_;L$T>3F_N(3\\5VN*.+]3S*^1@)0WOV%8[\"^KES:_F \\<XR.4-;^WSX8^)8HTO^7^IZOK>3._>+T$7;5C,K"
+    "\\+>85 PD<QO];\"5?%3)C\"_ \\Z:4EO_+;_SU<MC**@KOW-=?ZF;1RF_Y1UTET3>)K\\O!D1AM6PDO_6?]=B\"\\R&_I/^1F8CF'K\\PPH_()MD9"
+    "OPQU0?D7P!2__TM3$3 Y#[]W' 99S=\\$OX!%:: <[?2^+\"8F.W##'#QN4&Y-E0+U/LKK(6BY\"@4_(0$Y7*^9#S\\X.9G'Q145/W;WR-'47AH_<-"
+    "?6.K&F'S\\8;B P W8B/]>HZG\"_%B4_LRV8>N*T)S]N[M)<P4\\J/Q_F04:QYBP_EV+,K@=Y+S\\?J_I #0,Q/ZH[HB2@1C(_HGQ9*^B&,S_\\R8A"
+    "WD<,T/R3'+KI(_#4_*CK]1[LP-S]0$V,NEV X/[QR?DB+BSD_,(;Q4T>Q.C\\ $94%?-$[/_=] Q[;ZSP_4UCW?1< /C^9$W@ZY0T_/](&:-A\\\"D"
+    " _#6$CS86*0#]Z%LV/Z09!/\\,S&?:$?T$__4J%H#7T03\\3)*4#VF1\"/XY 17%1T4(_P-)@(7PY0S]&T^@Z.YU#/WCE6=QP_$,_;<@>) !71#_H&"
+    ";TXS:Q$/^X\\RE\"]_40_S3^FNK9)13]JJOKCH)!%/]4H^V!DTD4_Q11F\\^H.1C_QZT*1'T9&/RG17&ON=T8_44-W\\T2D1C_<1#OB$<M&/Z0]VSQ"
+    "%[$8_Y_!K6M '1S]Z\\?#HI1U'/V /&_*Y+4<_6TJWWP$X1S^<Y\\Q_=#Q'/_59:0@*.T<_H;X8&[PS1S]APPG(A29'/[K=VY!C$T<_:<X6:U/Z1C\\"
+    "5@$K\"5-M&/_5CUGEHMD8_FX-7[I\"+1C]XD[SVT5I&/]5F_^0P)$8_Y3F#AK3G13^ 71<D9:5%/Z'CG8%,744_L0)6W74/13]7^LGN[;M$/S];8.7"
+    "\"8D0_(JB09@0$1#_:7;N+PY]#/_^#I=\\2-D,_V \"86P;'0C]?_B)DLU)\"/ZS&A<4PV4$_=9*[KY9:03_1VRVR_M9 /\\C<#+>#3D _F^V=_(.\""
+    "/S^$KJ\\PKEX^/Q6#D,##,3T_<OSNZP3\\.S_)!2]OM+TZ/]SZ\"787=SD_H_Z(C74H.#]2/ER5&-(V/_'LD;!,=#4_0O.O-6 /-#]_<S.>HZ,R/]]"
+    "K>75I,3$_K,LGC@QR+S\\AEQX9H74L/^0T5S5!;BD_Q[,:'*%<)C^0K-1N>$$C/QN7; Z\"'2 _^Q]/X_?B&3]YUS;U37P3/\\RT\\\"P;$0H_\\/Q"
+    "IR PE^CXJ)B8[<,,<O*E.M%N91OJ^?@(;+\"Q4\"K_W',C+L<<3O]H@F;'8:!J_8B:PAO.%(+_,\"^Q)F]<COXWM#V:/*\">_$$PANOIW*K\\VPE%S"
+    "!\\4MO\\U:#J!OAS\"_V%[@P54J,K]5?03%RLHSO^DWK5UC:#6_7JU\\:+0\"-[^#,KT$4YDXOY.^J:[4*SJ_)0' 6<^Y.[^X]Q6+V4(]O__(K'.*Q"
+    "CZ_[U5=!3TB0+^PS/*3(-Y OP%#M,Z\\ED&_BFX.*=]+0K];_;\"M5?U\"OXHN;@OOJD._(2@#HGI41+]*ZL6.R/E$OV3$-;FIFD6_2C5KW^\\V1K_"
+    "[(&2B;<Y&ORY/*9+V8$>_4RC*.5_N1[]GKRLK?79(OT&]IPHG^4B_$8IYFC1V2;\\NFO3%?NU)O[LM@ZS?7DJ_?%IIK#+*2K_I!$IM5\"]+OR[V:NH"
+    "BCDN_MEJU?'WF2[_3 '#D1#A,O[^\\L%);@TR_$F6\"<J3'3+\\;ZKQQ!05-OZT8C0EE.TV_?*JIAJMJ3;]353/1PI)-OV&</726LTV_5CC^I!/-3;"
+    "]?_:!)*=]-O^ XOO_'Z4V_5Y1Q(N+L3;]JG@_0:^A-O_4O>.]:W$V_>_<#-:?(3;_WB@LG2JU-OZ%U!B(_BDV_VLU 7(-?3;^7]27I%2U-OUX_'[SW"
+    "\\DR_J4@%JRNQ3+_U\\B)PMF=,OUO\\R*N>%DR_HU%QY>R]2[^,2W&,JUU+O[,C.OCF]4J_E00G:*V&2K_H,]@\"#Q!*OZGN&M4=DDF_ :E=T.T,2;"
+    "_Q?;#(E(!(OQRU47(J[4>_ME[&7LA21[_\\(7_YB;%&O]=Q\"82,\"4:_WGG-$>]:1;\\\\+5F#TJ5$O]#\\.(%9ZD._!M9>=J@H0[_P(AB*Y6!\"O"
+    "W*BDYDXDT&_'P?X,,N_0+^:S1@(D<T_OZX]Y\\RZ$#Z_L-;WAG!)/+_I#P@K$G@ZO\\Z;[KD\"G3B_C:[$+:BX-K]WFT-F:\\LTOVA 6A2XU3*_A>K"
+    "]I/S7,+]W'G565*4MOW7*#)-HC\"F_,2FZ-\")F);_UUDTP<C,AOTJ:PA&<ZAF_FU/B.5]9$;_D#[#(4VH!ORHF)CMPPQP\\$V Y'\":( 3]60'+:_"
+    ")01/\\/.W62D<!H_'LA=1G6J(3^I$(A#U1\\F/\\QT5BM=ERH_XWH;H_4/+S]9S?V80L0Q/^:8UC_X_S,_/J8!2HTZ-C];]IJ+<G,X/]@H;4D8JCH_"
+    "!,*^6>[=/#__G&E%9 X_/P^]FK1TG4 _BD.WBW:Q03]@4-A<[\\)\"/W@#</F6T4,_+@ZD8\"7=1#]68FS04N5%/_AOO=;7Z48_.\"NZ8FWJ1S^I#>"
+    "K5S.9(/^-\";Q6PWDD_,2@YF]'12C]U22^'[+]+/XC]4+\"\\J$P_$,7%M?Z+33_,C]H/<&E./T0'Z\"#/0$\\_<0(/H^T(4#_W*AAT*FY0/_%Z\\,"
+    "7^SU _NO0Q\\4LN43_1=,SL\\XA1/U*)\"U;9WU$_#6F#>-\\R4C_^*>-5ZH%2/Z=<JJW>S%(_1C3 !*(34S_<:>JL&E93/WH,(LPOE%,_)'?$8\\G"
+    "-4S]&JIY7T )4/Y]-T70N,U0_6:6+>,Y>5#]SS9L6G(54/_Z4TO^#IU0_?ULYZ'/$5#^C6AB-6MQ4/V#/R[HG[U0_GGYF4LS\\5#_\\&B!/.@55/QX"
+    ";CLMD\"%4_[9FE!D &53\\#Y81HP?Y4/]]G X??\\50_&*X&*I+?5#_W09M/TL=4/Z$XT\"^:JE0_4TE40.6'5#\\]6=,WL%]4/VAR$Q'Y,50_SBC0"
+    "#;_^4S]$?E.Y L93/\\9BR^K%AU,_]/Q:QPM$4S_5\\^;#V/I2/[H!G*8RK%(_HR4OB\"!84C_?U];4JOY1/VZT_$S;GU$_@1VG!;T[43]+9IIH7-)"
+    "0/\\$F,33'8U _T,W6]1C@3S_%P6A%>>Y./VU/O<?2\\DT_<B\"MCTOM3#]PE!5/#-Y+/YY,%E- Q4H_82R[?Q6C23_5!A-+O'=(/PA4L[=G0T<_RF"
+    "6I3DT&1C^7MMD8I<!$/TL)SI>I<D,_Z#/SO9<<0C^0BT?FKKY /T46]I9ALCX_2=($_<+8.S\\-ZCRY#O$X/\\]=L@G6^S4_G%_TF:[Y,C_,2=#79-"
+    "8O/PJ^,G__H2D_TV<(]'%7(S_W47,K$O 9/XGXQXIF% H_*B8F.W##'+SP:M #@%<*OSSG(KTV=AJ_L8\\,)4#N([_CEB^NU:TJOWW$<'$NO#\"_!5"
+    "LP/R@F-+\\'-9*I$I0WOTBHK$@E!3N_X-QU!Y5X/K^+H$0DRO9 OWY\"TX6IL4*_MI'QB7]L1+_(JD,'XB9&O_R/1]UEX$>_LP!D\")^82;_NT4&V("
+    "$]+ORCE:UI] TV_;,<QPT:U3K]3>607!S)0OWQ,5#\"R!U&_V>F-VVS;4;\\O_X(@_ZQ2O_A\\ZNDP?%._]H+.$,I(5+^RZ*QGDA)5OYXLJ,51V56_"
+    "R8_&$=\"<5K_5'CU.U5Q7OWADQ*,I&5B_/G[T;)716+\\-2*9!X859O\\!05P+6-5J_WT:.XSSA6K]!BSUYWX=;O]\"4(<*'*5R_F- 8,P#&7+_NIW"
+    "+\"$UU=O]M6,_.-[EV_)#U*X#IZ7K_R5+A'Y_]>OR-\\I)5@?U^_@#Y;[W3X7[_6Z!N?>35@OT[[.9U5:V\"_N#ONNK:=8+]B_C.SA<Q@OZ_\\5KBK"
+    "]V\"_([@=>1(?8;\\YK^$EI$)AOXA+E'5+8F&_N'.OJO-]8;]&KQ\"8B)5AOXC-O:7VJ&&_3P62U2JX8;]TAM+'$L-AO^IZJ;^<R6&_7WF&I[?+8;]"
+    "+<&,54\\EAO_@4[4Y?PF&_9>>-3<VV8;\\<X5K\"CJ9AOZ/JX!F6D6&_ZCC2?]9W8;\\ NI+B0UEAOWV^HO;2-6&_8A/G.7D-8;]ZQLWV+.!@OTK63"
+    "D?EK6\"_$17(%YIV8+^=C;,I1#I@OS=_;RRZ\\5^_:B$BH;YD7[^QK:=0C,U>O^3/#)<;+%Z_Q$4ED6: 7;_GVAP@:<I<OR=6M>P@\"ER_'W P:HT_"
+    "6[^Z^N38KVI:O[9R?DB+BUF_5D3FF22B6+\\D'M: @JY7OPR]$H6ML%:_3Z]. [\"H5;];G+0MEI94OQJR& QN>E._#.G0>T=44K]JXS,O-\"11OPQ"
+    "X?%F/U$^_(%N\\FRY-3;_;%,MZ=+)*O\\0C1.N2!$B_KWXX?+]#1;]OB/E1,W!\"O_>U8T!6%#^_MR:91LXC.;]/T5<R5@\\SOY?^O^3XKBF_!&EX7"
+    "%GS&;\\J)B8[<,,</'Z<-^*.>1H_FZ#QI%:[*C\\7M+&^)CTT/P'J)7<?/#L_;S4!3.PL03_-U1Y]Q\\I$/PW<L:<\\=T@_<OU/'^0Q3#\\AZ7]!4_"
+    "I//ZTWND(.Z%$_?6HOQF?94S]7Q\"J9_-!5/^<EYL^1SE<_,V/-+>O163_N+<<NR]I;/U/^P1#SZ%T_-4B#W2+\\7S\\3GUNZ# IA/TRJ'TM*&&(_\""
+    "M9>=J@H8S_&O\"T,!3MD/V\\]Y%P]3V4_UKJX/BYE9C\\!VW43M'QG/R2Z2<ZJE6@_CH\"M^>VO:3^N1&2]6,MJ/[,=D.3%YVL_@4;<XP\\%;3^2*["
+    "O?$\"-N/Y$ZM[*B06\\_S:+J>4\\P<#^$I(-^[[]P/],NU_B=3W$_JT^58D??<3^>Y;L@V&YR/YJKZH8\\_G(_^%^\\VF\"-<S\\S9217,1QT/Z$XT"
+    "\"^:JG0_.QN,E(<X=3]#1ZJTY<5U/P4-;,*@4G8_3S!L]J3>=C_(WPF3WFEW/^\">T^<Y]'<_-WOQ5*-]>#^\\Y8U.!P9Y/VJ(/&!2C7D_3'%>,'$3"
+    ">C\\'[(*#4)AZ/XUCQ#_=&WL_+J8@< 2>>S\\)Y\\M'LQY\\/Z#8?277G7P_?SVXEET;?3_*3 9;-)=]/P=*-&=)$7X_C;!^Z(J)?C_R5+A'Y_]^/^"
+    "[?9BQ-='\\_7PC5?ZOF?S_?^0RX>\"N /SB3BCF'8H _L#>O)'F8@#]DGI2 1LV /Q%EC7SG ($_^TR)<50S@3]36'+CA62!/Q6$@H)TE($_L]N1+!"
+    "G#@3]@I5SN;/\"!/T]GP01I'((_R(?VW09'@C^:2[<:0'\"\"/PKX9X\\.F((_*-\\P16R^@C\\M'Q![4^.\"/T'?X::^!H,_\"=9>=J@H@S\\*Z!#"
+    "0\"TF#/PJN/=3C9X,_>+7&W2N%@S_C3O^\"WZ\"#/XC =Y;ZNH,_3;6])WG3@S\\KPA&$5^J#/Z'>$3>2_X,_G:Y8\"R83A#^A?A$+$\"6$/Q[5@(!"
+    "--80_*'Z!]MM#A#\\(^?4XN5\"$/TLQ+E7C6X0_;V]!FEAEA#]S;UR9%VV$/_6- R8?<X0_X_Y(5FYWA#\\3 _>\"!'J$/WL4KD?A>H0_$P/W@@1ZA"
+    "#_C_DA6;G>$/_6- R8?<X0_<V]<F1=MA#]O;T&:6&6$/TLQ+E7C6X0_\"/GU.+E0A#\\H?H'VVT.$/Q[5@(!--80_H7X1\"Q EA#^=KE@+)A.$/Z'>"
+    "$3>2_X,_*\\(1A%?J@S]-M;TG>=.#/XC =Y;ZNH,_XT[_@M^@@S]XM<;=*X6#/PJN/=3C9X,_\"N@0T M)@S\\)UEYVJ\"B#/T'?X::^!H,_+1\\0>"
+    "U/C@C\\HWS!%;+Z\"/PKX9X\\.F((_FDNW&D!P@C_(A_;=!D>\"/T]GP01I'((_8*5<[FSP@3^SVY$L&<.!/Q6$@H)TE($_4UARXX5D@3_[3(EQ5#."
+    "!/Q%EC7SG ($_9)Z4@$;-@#^P-Z\\D>9B /SB3BCF'8H _W_D,N'@K@#]?\"-5_J^9_/^[?9BQ-='\\_\\E2X1^?_?C^-L'[HBHE^/P=*-&=)$7X_R"
+    "DP&6S27?3]_/;B671M]/Z#8?277G7P_\">?+1[,>?#\\NIB!P!)Y[/XUCQ#_=&WL_!^R\"@U\"8>C],<5XP<1-Z/VJ(/&!2C7D_O.6-3@<&>3\\W>_"
+    "%4HWUX/^\">T^<Y]'<_R-\\)D]YI=S]/,&SVI-YV/P4-;,*@4G8_0T>JM.7%=3\\[&XR4ASAU/Z$XT\"^:JG0_,V4D5S$<=#_X7[S:8(US/YJKZH8\\"
+    "_G(_GN6[(-AN<C^K3Y5B1]]Q/],NU_B=3W$_A*2#?N^_<#_-HNIY3S!P/Y$ZM[*B06\\_DBN[WQ C;C^!1MSC#P5M/[,=D.3%YVL_KD1DO5C+:C^.@"
+    "*WY[:]I/R2Z2<ZJE6@_ =MU$[1\\9S_6NK@^+F5F/V\\]Y%P]3V4_QKPM# 4[9#\\*UEYVJ\"AC/TRJ'TM*&&(_$Y];N@P*83\\U2(/=(OQ?/U/^P1"
+    "#SZ%T_[BW'+LO:6S\\S8\\TMZ]%9/^<EYL^1SE<_5\\0JF?S053]]:B_&9]E3/ZTWND(.Z%$_(>E_05/Z3S]R_4\\?Y#%,/PW<L:<\\=T@_S=4>?<?"
+    "*1#]O-0%,[\"Q!/P'J)7<?/#L_%[2QOB8]-#^;H/&D5KLJ/WZ<-^*.>1H_*B8F.W##'#P$:7A<6?,9OY?^O^3XKBF_3]%7,E8/,[^W)IE&SB,YO_>U"
+    "8T!6%#^_;XCY43-P0K^O?CA\\OT-%O\\0C1.N2!$B_VQ3+>G2R2K\\@6[R;+DU-OPQX?%F/U$^_:N,S+S0D4;\\,Z=![1U12OQJR& QN>E._6YRT+9"
+    ":65+]/KTX#L*A5OPR]$H6ML%:_)![6@(*N5[]61.:9)*)8O[9R?DB+BUF_NOKDV*]J6K\\?<#!JC3];OR=6M>P@\"ER_Y]H<(&G*7+_$12619H!=O^"
+    "3/#)<;+%Z_L:VG4(S-7K]J(2*AOF1?OS=_;RRZ\\5^_G8VS*40Z8+\\1%<@7FG9@OTK63D?EK6\"_>L;-]BS@8+]B$^<Y>0UAOWV^HO;2-6&_ +J2X"
+    "D-98;_J.-)_UG=AOZ/JX!F6D6&_'.%:PHZF8;]EYXU-S;9AO_@4[4Y?PF&_2W!C%5/)8;]?>8:GM\\MAO^IZJ;^<R6&_=(;2QQ+#8;]/!9+5*KAAOX"
+    "C-O:7VJ&&_1J\\0F(B58;^X<Z^J\\WUAOXA+E'5+8F&_.:_A):1\"8;\\CN!UY$A]AOZ_\\5KBK]V\"_8OXSLX7,8+^X.^ZZMIU@OT[[.9U5:V\"_U"
+    "N@;GWDU8+^ /EOO=/A?OR-\\I)5@?U^_\\E2X1^?_7K\\D/4K@.GI>O]M6,_.-[EV_[J=RPA-=7;^8T!@S ,9<O]\"4(<*'*5R_08L]>=^'6[_?1H["
+    "C/.%:O\\!05P+6-5J_#4BF0>&%6;\\^?O1LE=%8OWADQ*,I&5B_U1X]3M5<5[_)C\\81T)Q6OYXLJ,51V56_LNBL9Y(25;_V@LX0RDA4O_A\\ZNDP?"
+    "%._+_^\"(/^L4K_9Z8W;;-M1OWQ,5#\"R!U&_4WED%P<R4+]LQS'#1K5.ORCE:UI] TV_[M%!MB!/2[^S &0(GYA)O_R/1]UEX$>_R*I#!^(F1K^VD"
+    "?&)?VQ$OWY\"TX6IL4*_BZ!$),KV0+_@W'4'E7@^OTBHK$@E!3N_!S62J1*4-[\\%6S _*\"8TOWW$<'$NO#\"_XY8OKM6M*K^QCPPE0.XCOSSG(KT"
+    "V=AJ_\\&K0 X!7\"K\\J)B8[<,,<O(GXQXIF% H_]U%S*Q+P&3_39PCT<5<C/PJ^,G__H2D_S$G0UV36+S^<7_29KODR/\\]=L@G6^S4_#>H\\N0[Q"
+    ".#])T@3]PM@[/T46]I9ALCX_D(M'YJZ^0#_H,_.]EQQ\"/TL)SI>I<D,_E[;9&*7 1#_*9:E.309&/PA4L[=G0T<_U0832[QW2#]A++M_%:-)/YY,%"
+    "E- Q4H_<)053PS>2S]R(*V/2^U,/VU/O<?2\\DT_Q<%H17GN3C_0S=;U&.!//\\$F,33'8U _2V:::%S24#^!':<%O3M1/VZT_$S;GU$_W]?6U*K^4"
+    "3^C)2^((%A2/[H!G*8RK%(_U?/FP]CZ4C_T_%K'\"T13/\\9BR^K%AU,_1'Y3N0+&4S_.*- -O_Y3/VAR$Q'Y,50_/5G3-[!?5#]3251 Y8=4/Z$XT"
+    "\"^:JE0_]T&;3]+'5#\\8K@8JDM]4/]]G X??\\50_ ^6$:,'^5#_MF:4&0 95/QX;CLMD\"%4__!H@3SH%53^>?F92S/Q4/V#/R[HG[U0_HUH8C5K"
+    "<5#]_6SGH<\\14/_Z4TO^#IU0_<\\V;%IR%5#]9I8MXSEY4/Y]-T70N,U0_1JJ>5] \"5#\\D=\\1CR<U3/WH,(LPOE%,_W&GJK!I64S]&-, $HA-3"
+    "/Z=<JJW>S%(__BGC5>J!4C\\-:8-XWS)2/U*)\"U;9WU$_T73,[/.(43^Z]#'Q2RY1/_%Z\\,7^SU _]RH8=\"IN4#]Q @^C[0A0/T0'Z\"#/0$\\_"
+    "S(_:#W!I3C\\0Q<6U_HM-/XC]4+\"\\J$P_=4DOA^R_2S\\Q*#F;T=%*/^-\";Q6PWDD_J0WJU<SF2#\\X*[IB;>I'/_AOO=;7Z48_5F)LT%+E13\\"
+    "N#J1@)=U$/W@#</F6T4,_8%#87._\"0C^*0[>+=K%!/P^]FK1TG4 __YQI160./S\\$PKY9[MT\\/]@H;4D8JCH_6_::BW)S.#\\^I@%*C3HV/^:8U"
+    "C_X_S,_6<W]F$+$,3_C>ANC]0\\O/\\QT5BM=ERH_J1\"(0]4?)C\\>R%U&=:HA/\\/.W62D<!H_5D!RVOR4$3\\38#D<)H@!/RHF)CMPPQP\\Y ^P"
+    "R%-J ;^;4^(Y7UD1OTJ:PA&<ZAF_]=9-,'(S(;\\Q*;HT(F8EOW7*#)-HC\"F_=QYU5E2E+;^%ZOVD_-<POVA 6A2XU3*_=YM#9FO+-+^-KL0MJ+@V"
+    "O\\Z;[KD\"G3B_Z0\\(*Q)X.K^PUO>&<$D\\OZX]Y\\RZ$#Z_FLT8\")'-/[\\?!_@PR[] OW*BDYDXDT&_\\\"(8BN5@0K\\&UEYVJ\"A#O]#\\.("
+    "%9ZD._/\"U9@]*E1+_>><T1[UI%O]=Q\"82,\"4:__\"%_^8FQ1K^V7L9>R%)'OQRU47(J[4>_\\7VPR)2 2+\\!J5W0[0Q)OZGN&M4=DDF_Z#/8 @"
+    "\\02K^5!\"=HK89*O[,C.OCF]4J_C$MQC*M=2[^C47'E[+U+OUO\\R*N>%DR_]?(B<+9G3+^I2 6K*[%,OUX_'[SW\\DR_E_4EZ14M3;_:S4!<@U]-"
+    "OZ%U!B(_BDV_]XH+)TJM3;][]P,UI\\A-O_4O>.]:W$V_:IX/T&OH3;]7E'$BXNQ-O^ XOO_'Z4V_7_V@22G?3;]6./ZD$\\U-OV&</726LTV_4U4S"
+    "T<*23;]\\JJF&JVI-OZT8C0EE.TV_&^J\\<04%3;\\298)RI,=,O[^\\L%);@TR_TP!PY$0X3+^V6K5\\?>9+OR[V:NHBCDN_Z01*;50O2[]\\6FFL"
+    ",LI*O[LM@ZS?7DJ_+IKTQ7[M2;\\1BGF:-'9)OT&]IPHG^4B_9Z\\K*WUV2+]3*,HY7^Y'ORY/*9+V8$>_^R!DHFW.1K]*-6O?[S9&OV3$-;FIFD6_"
+    "2NK%CLCY1+\\A* .B>E1$OXHN;@OOJD._6_VPK57]0K^*;@XIWTM\"OP%#M,Z\\ED&_L,SRDR#>0+_O55T%/2) O__(K'.*QCZ_N/<5B]E\"/;\\E "
+    "<!9S[D[OY.^J:[4*SJ_@S*]!%.9.+]>K7QHM (WO^DWK5UC:#6_57T$Q<K*,[_87N#!52HRO\\U:#J!OAS\"_-L)1<P?%+;\\03\"&Z^G<JOXWM#V:"
+    "/*\">_S OL29O7([]B)K\"&\\X4@O]H@F;'8:!J_]QS(R[''$[]^ ALL+%0*OZE.M%N91OJ^*B8F.W##'+SP_&G(#\"7Z/LRT\\\"P;$0H_>=<V]4U"
+    "\\$S_['T_C]^(9/QN7; Z\"'2 _D*S4;GA!(S_'LQH<H5PF/^0T5S5!;BD_(9<>&:%U+#^LRR>.#'(O/]]K>75I,3$_?W,SGJ.C,C]\"\\Z\\U8 \\"
+    "T/_'LD;!,=#4_4CY<E1C2-C^C_HB-=2@X/]SZ\"787=SD_R04O;[2].C]R_.[K!/P[/Q6#D,##,3T_A*ZO,*Y>/C^;[9W\\@X(_/\\C<#+>#3D _T="
+    "LMLO[60#]UDKNOEEI!/ZS&A<4PV4$_7_XB9+-20C_8 )A;!L=\"/_^#I=\\2-D,_VEV[B\\.?0S\\BJ)!F! 1$/S];8.7\"8D0_5_K)[NV[1#^Q E;"
+    "==0]%/Z'CG8%,744_@%T7)&6E13_E.8.&M.=%/]5F_^0P)$8_>).\\]M%:1C^;@U?ND(M&/_5CUGEHMD8_%8!*PE3;1C]ISA9K4_I&/[K=VY!C$T<_"
+    "8<,)R(4F1S^AOA@;O#-'/_59:0@*.T<_G.?,?W0\\1S];2K?? 3A'/V /&_*Y+4<_>O'PZ*4=1S_G\\&M:T ='/Z0]VSQ%[$8_W$0[XA'+1C]10W?S"
+    "1*1&/RG17&ON=T8_\\>M\"D1]&1C_%%&;SZ@Y&/]4H^V!DTD4_:JKZXZ\"013_-/Z:ZMDE%/^X\\RE\"]_40_Z!F].,VL1#]MR!XD %=$/WCE6=QP_"
+    "$,_1M/H.CN=0S_ TF A?#E#/XY 17%1T4(_$R2E ]ID0C_]2H6@-?1!/\\,S&?:$?T$_>A;-C^D&03\\-82/-A8I /](&:-A\\\"D _F1-X.N4-/S]"
+    "36/=]%P ^/_=] Q[;ZSP_ !&5!7S1.S\\PAO%31[$Z/[QR?DB+BSD_4!-C+I=@.#\\J.OU'NS W/R3'+KI(_#4__,F(=Y'#-#^B?%DKZ(8S/ZH[HB2"
+    "@1C(_'ZOZ0 T#,3^78LRN!WDO/Q_F04:QYBP_;N[27,%/*C^S+9AZXK0G/]>HZG\"_%B4_&&X@, -V(C]PU]8ZL:8?/W;WR-'47AH_.#F9Q\\45%3\\"
+    "A 3E<KYD//\\KK(6BY\"@4_;E!N394\"]3XL)B8[<,,</(!%:: <[?2^=QP&6<W?!+__2U,1,#D/OPQU0?D7P!2_,,*/R\";9&;^D_Y&9B.8>O_6?]"
+    "=B\"\\R&_+P9$8;5L)+_E'7271-XFOW-=?ZF;1RF_\\]7+8RBH*[\\#SII26_\\MO];\"5?%3)C\"_\"WF%0,)',;]XO01=M6,RO^7^IZOK>3._M\\"
+    "^&/B6*-+^8#QSC(Y0UOV%8[\"^KES:_4\\ROD8\"4-[^XA/Q7:XHXO]?_;L$T>3F_9!-.!ZA@.K_M ZAHDD [OY>+YC3#&#R_F[;7U0OI/+_@I2G9/"
+    "[$]OT%F5_DT<3Z_\"3(%)L,H/[\\_F,J+Q-<_OR*2M,T*/T\"_AB4WB,J-0+^ZPI_[$=A OT/21]G2'4&_HD@>  !?0;^V:,I^C9M!OPLF@I5PTT&_"
+    "3_F3MY\\&0K_K\":2,$C5\"OQVDG/'!7D*_X@-2^:>#0K\\2D=GLOZ-\"OTVZE$L&OT*_4Z_ORGC50K]43=15%N=\"OT>BT0O?\\T*_=GWX/]3[0K\\"
+    ";EFUW^/Y\"O^'AL6=/_4*_P\\:A]-WV0K_(Y\"LNJNM\"OT)%P$V[VT*_E,UXLQG'0K]3Y/OBSJU\"OU1'&H#ECT*_;2$I2VEM0K\\\"?AD=9T9\"O"
+    "QI(3N/L&D*_F! RFPGK0;]FYXU-S;9!OQ^@H@E)?D&_-.D%X(Y!0;_ZJ43=L0!!OVTI3 3&NT\"_!(N;2.!R0+_D/#^(%B9 OS'Y+PO_JC^_[DG>P6"
+    "4\"/[\\( ;0CDE(^O_70V\\\"VFSV_&P&.O ?>/+^6U,:^NAD\\O\\>GJ>4&3SN_D)V4MB1^.K](PN@.3J<YOPZ@BA2^RCB_,D@?)K'H-[]NY G+9 "
+    "$WO_/Q+:,7%3:_3DUZ5@DD-;^\"1T&$>BXTOQC^8;*L-#._?3]'/.(V,K\\V1<!!7C4QOXB7MY5D,#\"_)^2867-0+K\\Q\":8713HLOY/4?VS)'BJ"
+    "_-G<&.8S^)[\\I+J\\4&MHEOR@!$RH LB._F>EV$\\R&(;^0-:QN%[(>O],E[DF:4AJ_?$0HXCSP%;_)\\3\\E&XP1OY8_N_Z@3@J_!(,R*N^% ;_&"
+    "\\T;XIX#QOBHF)CMPPQR\\"
+  }
+}

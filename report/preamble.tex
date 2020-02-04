@@ -1,0 +1,168 @@
+% Basic geometry
+\usepackage[a4paper,margin=3cm]{geometry}
+
+% Macros specific for pdftex / luatex / xetex compilers
+\usepackage{ifthen}
+\usepackage{ifxetex,ifluatex}
+
+% Compiler stuff
+% For LuaLaTeX and XeLaTeX
+\newcommand{\compilersettingsluaxe}{
+    % Put here things that are common to XeLaTeX and LuaLaTeX
+    \usepackage{fontspec}
+  }
+\ifluatex
+    \typeout{ *** LuaLaTeX *** ^^J}
+    % LuaLaTeX specific code
+    \compilersettingsluaxe
+    % \usepackage{luatextra}
+    % \usepackage[utf8]{luainputenc} % Only needed for old fonts
+\else\ifxetex
+    \typeout{ *** XeLaTeX *** ^^J}
+    % XeLaTeX specific code
+    \compilersettingsluaxe
+\else
+    \typeout{ *** LaTeX *** ^^J}
+    % pdfLaTeX specific code
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+\fi\fi
+
+% My fonts
+% For LuaLaTeX and XeLaTeX
+\newcommand{\fontsettingsluaxe}{
+    % Put here things that are common to XeLaTeX and LuaLaTeX
+    \setsansfont{Arial}  % Closest thing in Win to Helvetica
+  }
+\ifluatex
+    % LuaLaTeX specific code
+    \fontsettingsluaxe
+\else\ifxetex
+    % XeLaTeX specific code
+    \fontsettingsluaxe
+\else
+    % pdfLaTeX specific code
+    \usepackage[scaled]{helvet}
+\fi\fi
+
+% Set the sans-serifs font as the main font.
+% Comment this out if you don't want this behaviour.
+\renewcommand*\familydefault{\sfdefault}
+
+% Language hyphenation and typographical rules
+\usepackage[portuguese,english]{babel}
+\usepackage{csquotes}
+
+% Multiple authors and affiliations
+\usepackage{authblk}
+
+% Code listings
+\usepackage{listings}
+
+% Bibliography setup
+% https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX
+% https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex
+% https://www.overleaf.com/learn/latex/Bibtex%20bibliography%20styles#Biblatex_styles
+% https://www.overleaf.com/learn/latex/Natbib%20citation%20styles#Biblatex_citation_styles
+\usepackage[style=ieee,
+    natbib=true,
+    backend=biber,
+    bibencoding=utf8,
+    doi=false,
+    isbn=false,
+    url=false,
+    maxnames=3,
+    backref=true]
+        {biblatex}
+% Citing by section might involve re-writing the macro
+% https://tex.stackexchange.com/questions/208678/biblatex-customizing-backreferences
+\DefineBibliographyStrings{english}{%
+backrefpage = {cited on page},% originally "cited on page"
+backrefpages = {cited on pages},% originally "cited on pages"
+}
+\DefineBibliographyStrings{portuguese}{%
+backrefpage = {citado na página},
+backrefpages = {citado nas páginas},
+}
+
+% Interesting float placements (like 'H') and custom float types
+\usepackage{float}
+% Use pgf pictures
+\usepackage{pgf}
+\usepackage{adjustbox}
+% Place floats *above* footnotes
+\usepackage[bottom,symbol]{footmisc}
+% Reset footnote counter every page
+\usepackage{perpage}
+\MakePerPage{footnote}
+% Set default float placement
+% \makeatletter
+% \renewcommand{\fps@figure}{tbph}
+% \renewcommand{\fps@table}{tbph}
+% \makeatother
+
+% Pretty colours
+\usepackage{xcolor}
+
+% Graphics stuff
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% SVGs with Inkscape and PDF+LaTeX
+% https://tex.stackexchange.com/questions/473994/svg-and-inkscape
+\usepackage[inkscapearea=page]{svg}
+\svgpath{{svg/}}
+
+% For sub-figures and stuff
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Math stuff
+\usepackage{amsmath} % Interesting environments
+\usepackage{commath} % Interesting macros
+\usepackage{amssymb} % Interesting symbols
+
+\usepackage{siunitx} % Units and numbers in text
+
+% Use more than one optional parameter in a new commands
+\usepackage{xargs}
+
+% Flush two column page ends
+\usepackage{flushend}
+% \usepackage{balance}
+
+% Interesting URL breakings
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-\do\&\do.\do:}
+
+% Hyperref and Backref
+% backref makes the bibliography say where the entry was cited.
+% For the print version of the thesis you might wanna set all colors to back
+\usepackage{hyperref}
+\hypersetup{colorlinks,citecolor=blue,urlcolor=blue,linkcolor=blue, breaklinks=true}
+
+% Notes on the documents
+% https://tex.stackexchange.com/questions/9796/how-to-add-todo-notes
+% https://tex.stackexchange.com/questions/316220/todo-commentsnot-include-and-left-align
+% Examples:
+% \unsure{Is this correct?}, \change{Change this!},
+% \info{This can help me in chapter seven!}
+% \improvement{This really needs to be improved!\\ What was I thinking?!}
+% \thiswillnotshow{This is hidden since option `disable' is chosen!}
+% WARNING: It eliminates whitespaces in front of it.
+% You can add trailing {} to avoid.
+
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny, textwidth=2cm]{todonotes}
+\newcommandx{\unsure}[2][1=]{
+    \todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}
+    }
+\newcommandx{\change}[2][1=]{
+    \todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}
+    }
+\newcommandx{\info}[2][1=]{
+    \todo[linecolor=green,backgroundcolor=green!25,bordercolor=green,#1]{#2}
+    }
+\newcommandx{\improvement}[2][1=]{
+    \todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}
+    }
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}

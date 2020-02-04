@@ -1,0 +1,33 @@
+% Select here document class properties
+\documentclass[a4paper,twoside,twocolumn]{article}
+
+% Include preamble in a separate file
+% This is where you set packages and settings
+\input{preamble}
+
+\title{DCS final assignment}
+\author{Rui L. V. Oliveira}
+
+% Before beginning the document, do some custom stuff
+
+% Add here your biblatex files
+\addbibresource{references.bib}
+
+% Custom definitions for siunitx
+\DeclareSIUnit\baud{Bd} % Baud
+\DeclareSIUnit\sample{sa} % Baudv
+
+% Config listings
+\lstset{language=Matlab,basicstyle=\ttfamily,keywordstyle={\color{blue}}}
+
+\begin{document}
+
+% Write the document in contents.tex
+\input{contents}
+
+% Display bibliography
+% \balance
+\pagebreak
+\printbibliography
+
+\end{document}

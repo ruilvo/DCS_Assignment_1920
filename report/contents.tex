@@ -1,0 +1,603 @@
+\twocolumn[
+    \maketitle
+    \begin{@twocolumnfalse}
+        \begin{abstract}
+            In this study we analyse the performance characteristics of different
+            modulations in the presence of additive white gaussian noise or
+            multipath channels. We analyse the best modulations and modulation
+            orders for each scenario and demonstrate orthogonal frequency-division
+            multiplexing's capability ti resist to intersymbol interference up to
+            the guard interval.
+        \end{abstract}
+        \vspace{5mm} %5mm vertical space
+    \end{@twocolumnfalse}
+]
+
+\section{Introduction}
+
+It is rather intuitive that different (de)modulation schemes have different
+performance when subject to similar channel conditions. In this study, we compare
+the performance of M-PSK, M-QAM and M-FSK modulations in the presence of additive
+white Gaussian noise (AWGN), with and without using error correction techniques,
+and over multipath channels. But first, let us define and explore all these
+things.
+
+\subsection{PSK modulation}
+
+The first modulation scheme studied is phase-shift keying modulation, usually
+shortened to PSK modulation. Formally, it works by encoding one bit or groups of
+bits, called symbols, in phase-shifts of a carrier wave. In essence, a PSK signal
+can be described by the following formulation:
+\begin{equation}
+    s_{\text{PSK}}(t) = \cos \left( 2\pi f t + 2\pi n/M \right)
+\end{equation}
+where \(M\) is the number of different symbols being keyed, called the modulation
+order, and \(n = \{0,\ldots,M-1\}\) is the symbol being keyed, which would be
+itself a function of time.
+
+While this formulation describes well the behaviour in RF signals, at baseband we
+have to be more careful, and resort to a complex exponential notation. In this
+case, we can describe PSK as:
+\begin{equation}
+    s_{\text{PSK}}(t) = e^{2\pi j n/M}
+\end{equation}
+This leads to an interesting interpretation of PSK\@: what we are doing is
+choosing one out of a series of discrete points in the unit circle in the complex
+plane. To these points we call a constellation. The modulation order, \(M\) is
+equal to the number of points in this circle.
+
+It is also important to discuss how to assign digital information to these
+aforementioned symbols. The natural thing to do is to assign each symbol to a
+particular bit pattern. This leads that modulation orders should be chosen as
+powers of two and, for a modulation order \(M\) each symbol carries
+\(\log_{2}(M)\) bits. In assigning each symbol to a particular bit pattern, it is
+usual to use Gray coding, meaning that each symbol differs from it's neighbours by
+only one bit. Figure~\ref{fig:pskfig} illustrates these concepts.
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{QPSK_Gray_Coded.png}
+    \caption{Constellation diagram for QPSK (4-PSK) with Gray
+        coding~\cite{wikipskconst}.
+        \href{https://creativecommons.org/licenses/by-sa/3.0/deed.en}
+        {Licensed under the Creative Commons Attribution-Share Alike 3.0
+            Unported}.\label{fig:pskfig}}
+\end{figure}
+
+Finally, it is worth discussing the process of getting the symbols back from the
+transmitted signal, at the receiving end. If the signal is contaminated with noise
+(and it will generally be), the phase of the signal gets harder to determine. In
+particular, it's not expected that the phase matches exactly the one of any of the
+symbols. A simple method to solve this is to choose a symbol whose phase is
+closest to the one measured.
+
+\subsubsection{Error rate vs noise for PSK}
+
+Figure~\ref{fig:pskser} describes the probability of symbol error (SER) for PSK
+modulation.
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{pskser}
+    \caption{SER for PSK with different modulation orders. Adapted from the class
+        documents~\cite{slidesaulas}\label{fig:pskser}.}
+\end{figure}
+These curves are fairly easy to understand. If we look back into the
+constellation, we'll notice that the frequency step between adjacent symbols is
+smaller for higher modulation orders. If the modulator decides on the symbol by
+choosing whichever is closest, a certain phase shift caused by noise has a higher
+probability to cross a decision boundary when these decision regions are smaller.
+For completion sake, the approximate analytical expression for these curves is
+given by~\cite{slidesaulas}:
+\begin{equation}
+    P_e = 2Q \left( \sqrt{\frac{2E_s}{N_0}}\sin\frac{\pi}{M} \right)
+\end{equation}
+
+\subsection{QAM modulation}
+
+Quadrature amplitude modulation, or QAM, can be seen as an extension to PSK\@ (or
+the latter as a particular case of the former). Instead of selecting points in the
+unit circle for our constellation, we select our points ``arbitrarily'' in the
+complex plane, leading to both phase and amplitude modulation. Let
+\(S_{\text{QAM}}\) be the set of symbols (points in the complex plane) that define
+the constellation. A QAM signal in baseband would be described as:
+\begin{equation}
+    s_{\text{QAM}}(t) = \left|S_{\text{QAM}}[n] \right| e^{2\pi j
+            \angle S_{\text{QAM}}[n]}
+\end{equation}
+where \(n = \{1,\ldots,M-1\}\), is the index of a symbol in the set. It is usual
+to prefer square QAM shapes, leading to modulation indexes that are powers of 4,
+albeit any constellation can be defined. Figure~\ref{fig:qamconst} illustrates
+typical QAM constellations.
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{Square-QAM-constellation-diagrams.png}
+    \caption{Typical constellations for QAM signals. Adapted from~\cite{Pfau2009}\label{fig:qamconst}.}
+\end{figure}
+
+Similarly to what is done with PSK, in a QAM demodulator the decision on the
+symbol during demodulation can be done by choosing whatever is closest to the
+measured signal. Since both amplitude and phase are at play in QAM, the use of IQ
+demodulators is of great help, transforming this problem into a problem of two
+phases.
+
+\subsubsection{Error rate vs noise for QAM}
+
+The behaviour of bit and symbol error rated for QAM is very similar to the one for
+PSK, for the same reasons. The bit error probability for QAM modulation is given
+by:
+\begin{multline}
+    P_{b, \text{QAM}} = \frac{4}{\log_2 M}
+    \left( 1 - \frac{1}{\sqrt{M}}  \right) Q
+    \\
+    \sqrt{\frac{3 \log_2 M}{M-1} \frac{E_b}{N_0}}
+\end{multline}
+
+\subsection{FSK Modulation}
+
+Frequency-shift keying, or FSK, works a bit different from the previous ones.
+Instead of encoding information into multiplying a carrier signal by a
+complex-valued factor, we instead frequency-shift the carrier signal altogether.
+At baseband level, an FSK signal can be described as:
+\begin{equation}
+    s_{\text{FSK}}(t) = e^{2\pi j\times n/M \times \Delta f_{\text{MAX}}}
+\end{equation}
+where \(n = \{1,\ldots,M-1\}\) is a number corresponding to the symbol to the
+transmitted, \(M\) is the modulation index (and maximum number of symbols) and
+\(\Delta f_{\text{MAX}}\) is the maximum frequency shift of the signal.
+
+\subsubsection{Error rate vs noise for FSK}
+
+Figure~\ref{fig:fskser} describes the probability of symbol error for FSK
+modulation.
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{fskser}
+    \caption{SER for FSK with different modulation orders. Adapted from the class
+        documents~\cite{slidesaulas}\label{fig:fskser}.}
+\end{figure}
+It's interesting to see that with FSK the probability of symbol error is actually
+smaller for higher order modulation orders, given a positive SNR\@. While this may
+seem surprising at first, there is an explanation. We can imagine that, similarly
+to a Fast Fourier Transform (FFT), the frequencies between the carrier frequency
+and the maximum signal frequency signal are divided into \(N\) frequency``bins''.
+For high modulation order, these bins are ever smaller. This means that they will
+``integrate'' a smaller bandwidth of noise, resulting in less noise energy in the
+bin. At the same time, the power of the signal transmitting the symbol itself is
+the same, resulting in higher ``contrast''. The drawback to use high modulation
+orders is the need to very accurate frequency matching between the transmitter and
+the receiver. The approximate analytical expression for these curves is given
+by~\cite{slidesaulas}:
+\begin{equation}
+    P_e \leqslant (M-1)Q\left( \sqrt{\frac{E_s}{N_0}} \right)
+\end{equation}
+
+
+\subsection{A note on pulse shaping filters}
+
+Doing simple PSK or QAM modulation per the equations given results in sharp
+transitions of the carrier wave. These sharp transitions yield high (theoretically
+infinite) bandwidth of the carrier signal in these transients. For the multipath
+simulations especially, this is very important, as time delays were implemented
+with an FFT-based algorithm (these is discussed in the appropriate section).
+Therefore, for these simulations, it is important to apply a bandwidth limiting
+filter. It is usual to use a pair of matched raised-cosine filters for these
+modulations. This is what I did. MATLAB's own function to implement the
+raised-cosine filter also has the advantage of oversampling the modulated symbols,
+which was convenient.
+
+For FSK, there are problems with the frequency shifts between symbols are not
+phase-continuous. Fortunately, MATLAB's own FSK modulation function provides a
+phase continuity option, which was used.
+
+\subsection{OFDM modulation}
+
+Orthogonal Frequency-Division Multiplexing modulation, or OFDM modulation for
+short, works differently from the modulation schemes seen previously. As the name
+implies, OFDM is not a modulation scheme \textit{per se} but rather a multiplexing
+technique. On OFDM, digital data that was previously modulated by other modulation
+schemes is multiplexed in frequency in a way that ensures orthogonality. This
+means that subcarriers of the OFDM signal do not suffer from cross-talk, and
+therefore there is no intersymbol interference. The orthogonality condition is
+ensured if the subcarrier spacing is given by:
+\begin{equation}
+    \Delta f = \frac{k}{T_S}
+    \label{eq:subspace}
+\end{equation}
+where \(T_S\) is the symbol duration, and \(k\) is a positive integer. \(k=1\)
+yields the lowest positive bandwidth.
+
+Using subcarriers allows a system to achieve data throughputs equivalent to a very
+high bandwidth single carrier system of other modulation types (like PSK and QAM)
+but using subcarriers that themselves have relatively low baud rates. This is the
+key for making OFDM resistant to multipath channels (to be discussed in a section
+below). With the use of a guard interval, i.e., an extra time delay between
+symbols, all the interference problems due to multipath effect that generate time
+delays up to that interval are simply ignored. This trade-off is not important in
+OFDM modulation since, as discussed, each subcarrier's baud rate is relatively
+small so the effect of adding a guard interval doesn't result in dramatic changes
+of data throughput.
+
+\subsection{AWGN}
+
+We will start by justifying Additive White Gaussian Noise as a good model for a
+single path communication channel. The additive characteristic of AWGN models the
+radiation that is present at the receiving end that does not relate to the signal
+being transmitted. Without any further information, there is no reason to assume
+that this noise would dependant in the frequency in any way. This is what is said
+to be ``white'' noise. Finally, the source of this model is modelled as a random
+source. By the central limit theorem, it's justifiable that the distribution for
+this noise would be a Gaussian distribution. In fact, instead of saying that there
+is a single noise source, the noise at a receiver can be modelled as an
+arbitrarily large number of individual noise sources, giving strength to the
+central limit theorem argument. In the context of this work, this AWGN will be
+generated in a way that produces a determined signal-to-noise (SRN) ratio at the
+receiver's ``input''. To compute that, we first compute the average sample energy
+of the discrete-time transmitted signal, \(x_{\text{TX}}[n]\), of length
+\(N{\text{s}}\) samples:
+\begin{equation}
+    E_{\text{s}} = \frac{1}{N{\text{s}}}\sum^{N{\text{s}}}_{n}
+    \left|x_{\text{TX}}[n]\right|^{2}
+\end{equation}
+We then use this value and our target SNR to compute a noise spectral density,
+\(N_0\):
+\begin{equation}
+    N_0 = \frac{E_{\text{s}}}{\text{SNR}}
+\end{equation}
+White Gaussian noise becomes fully characterized by it's variance,
+\(\sigma_{\text{AWGN}}\):
+\begin{equation}
+    \sigma_{\text{AWGN}} = \sqrt{N_0}
+\end{equation}
+We'll be performing only baseband simulations, using complex-valued signals. With
+this in mind, our signal at the receiver, \(x_{\text{RX}}[n]\), becomes:
+\begin{equation}
+    x_{\text{RX}}[n] = x_{\text{TX}}[n] + \frac{\sigma_{\text{AWGN}}}{\sqrt{2}}
+    \left( N[n] + jN[n] \right)
+\end{equation}
+where \(N[n]\) describes a concretization of a random variable with normal
+distribution and \(j\) is the imaginary unit.
+
+The work presented relies heavily on MATLAB's ``Communications
+Toolbox''~\cite{comtoolbox}, which happens to include a function for this purpose,
+\lstinline{awgn}~\cite{awgnfunc}. However, I did notice this function only adds
+real-valued noise, leaving the imaginary part of signals intact. For the sake of
+achieved a more correct behaviour, I used a custom function to add
+AWGN~\cite{addawgnnoise}, included as the {\tt add\_awgn\_noise.m} file.
+
+\subsection{Multipath channels}
+
+Radio communication channel is said to be a multipath channel where the signal
+transmitted reaches the receiver by two, or more, path. Effects of multipath
+channels include coherent interference, that when destructive, can cause fading of
+radio channels. Other effect is intersymbol interference, since the secondary
+channels with be delayed relative to the dominant channel, the receiver will have
+instants where it will receive conflicting information.
+
+While models for OFDM channels can have some complexity, the scope of this work
+focus mainly on the effect of channel delays. The simulation model will be
+discussed in the results section, but the note is that it is admittedly
+simplistic, but it allows for the analysis of the effects intended.
+
+\subsection{Cyclic codes}
+
+The first of the two error correction techniques studied in this work is the use
+of cyclic codes. Cyclic codes are a particular type of linear block codes and the
+characteristic of cyclic means that all code vectors of the block code are
+obtained from each other by circular shifts.
+
+The two important parameters for the context of these simulations are \(n\), the
+code length (meaning the length of the ``output'' of the encoder) and \(k\), the
+message length (meaning the length of the ``input'' of the encoder). Let then
+\(d\) be the minimum distance of a cyclic code. That code can then detect up to
+\(d-1\) errors and correct \((d-1)/2\) errors.
+
+\subsection{Convolutional codes}
+
+Convolutional codes work differently from cyclic codes. In convolutional codes
+error correction, we add memory into the system, meaning that the output for each
+input sequence depends not only on the present input but on the past of the
+system.
+
+This means that convolutional codes are described by three parameters: \(n\) and
+\(k\) as before, and now \(K\), meaning the memory of the system. The
+convolutional encoder then works basically as a state machine.
+
+\section{Simulation and results}
+
+\subsection{Exercise 1}
+
+In question 1 we are asked to explore different modulation schemes, at different
+modulation orders, analysing the bit error rate in relation to the power of
+AWGN\@. This simulation is on the script {\tt simulation\_awgn.m} and makes heavy
+use of the function defined on {\tt modem\_awgn.m}. For PSK, QAM and FSK modems,
+the function modulates a random binary stream, upsamples the data using a Raised
+Cosine filter for PSK and QAM, and for each target \(E_b/N_0\), it applies the
+proper noise power, demodulates the signal and calculates the final BER\@.
+
+For the sake of comparability, the independent variable in the simulation is the
+relation \(E_b/N_0\). However, the function {\tt add\_awgn\_noise} takes a target
+SNR as the argument. The equation that transforms between these quantities is
+given by:
+\begin{multline}
+    \text{SNR dB} = \frac{E_b}{N_0} \text{ dB }
+    + 10 \log_{10} \left( \log_2 (M) \right) \\
+    - 10 \log_{10} (N_s)
+\end{multline}
+where \(N_s\) is the number of samples per symbol.
+
+Figure~\ref{fig:pskberawgnres} shows the results for PSK modulation. The
+theoretical curves were computed using the MALTAB function {\tt berawgn}. We see
+good agreement between the curves. We see that 2-PSK (also called BPSK for binary)
+and 4-PSK have pretty much the same BER curve.
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{pdf/figure_1.pdf}
+    \caption{BER for M-PSK modulation.\label{fig:pskberawgnres}}
+\end{figure}
+For higher order modulations, we see the BER get progressively worse for the same
+\(E_b/N_0\), as expected and discussed in the introduction.
+
+Figure~\ref{fig:qamberawgnres} shows the results for QAM modulation. The
+conclusions are very similar to the case for PSK modulation.
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{pdf/figure_2.pdf}
+    \caption{BER for M-QAM modulation.\label{fig:qamberawgnres}}
+\end{figure}
+
+Finally, figure~\ref{fig:fskberawgnres} shows the results for FSK modulation.
+Here, we see a good agreement for lower modulation orders, but higher order
+modulations, especially for \(M=32\) gets worse. For the lower modulation orders
+we see the behaviour discussed in the introduction: the BER is actually better for
+higher modulation orders. This trend continues in the theoretical curves, but for
+some reason that I couldn't figure out, practical results do not confirm this.
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{pdf/figure_3.pdf}
+    \caption{BER for M-FSK modulation.\label{fig:fskberawgnres}}
+\end{figure}
+
+Now that we have seen how each modulation scheme behaves in according to its
+modulation index, it becomes interesting also to see how do they compare amongst
+themselves. Figure~\ref{fig:compawgnres} shows exactly this. Keep in mind that not
+all modulation orders where used for all modulation schemes. In the way that the
+simulation was made, the same modulation order will yield the same bit rate, but
+not necessarily the same bandwidth. If the latter is not a factor, this plot can
+help us choose the best modulation technique, depending on the modulation order
+one intends to use. We can see that for low modulation orders, like \(N=2\) and
+\(N=4\), where QAM and PSK are nominally the same thing, they perform better than
+FSK\@. However, for high modulation orders, FSK takes the lead as a best
+modulation strategy.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\columnwidth]{pdf/figure_10.pdf}
+    \caption{BER for different modulations.\label{fig:compawgnres}}
+\end{figure}
+
+\subsection{Exercise 2}
+
+In exercise 2, we are prompted to study the effect of both cyclical and error
+correction codes. We are to apply this correction methods to the previously
+studied modulation schemes and see the variation in BER\@.
+
+\subsubsection{Cyclic codes}
+
+For the cyclic code study, I used two pairs of \((k,n)\) parameters: \(k=8\),
+\(n=4\), and \(k=10\), \(n=2\). The polynomials for these parameters were
+generated using the {\tt cyclpoly} function. Then, a parity-check matrix is
+generated using the function {\tt cyclgen}. Finally, this parity-check matrix is
+fed into the function {\tt syndtable} to produce the syndrome decoding table.
+MATLAB's own {\tt encode} and {\tt decode} functions provide the interface to use
+these elements into encoding the message and decoding the received bits.
+
+For the \(k=8\), \(n=4\) pair of parameters, the minimum distance is 2, so the
+maximum number of detectable errors is 1 and there is not the possibility of
+correction, so we don't expect any improvements in relation to the previous case.
+For \(k=10\) and \(n=2\), we do expect improvements: the minimum distance is 5, so
+it's possible to detect up to 4 errors and decode up to two errors, so we do
+expect some improvements.
+
+Figures~\ref{fig:pskcrc},~\ref{fig:qamcrc}, and~\ref{fig:fskcrc}, show the results
+for the different modulations.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{pdf/figure_4.pdf}
+        \caption{BER for PSK modulation w/ cyclic coding.
+            \label{fig:pskcrc}}
+    \end{subfigure} \hfill
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{pdf/figure_6.pdf}
+        \caption{BER for FSK modulation w/ cyclic coding.
+            \label{fig:fskcrc}}
+    \end{subfigure} \\
+    \begin{subfigure}[t]{\columnwidth}
+        \centering
+        \includegraphics[width=0.5\columnwidth]{pdf/figure_5.pdf}
+        \caption{BER for QAM modulation w/ cyclic coding.
+            \label{fig:qamcrc}}
+    \end{subfigure}
+    \caption{Results for the cyclic encoder.}
+\end{figure}
+% \begin{figure} \centering
+%     \adjustbox{width=\columnwidth,keepaspectratio}{\input{figures/pdf/figure_4.pdf}
+%     }
+%     \caption{BER for PSK modulation w/ cyclic coding.\label{fig:pskcrc}}
+% \end{figure} \begin{figure} \centering
+% \adjustbox{width=\columnwidth,keepaspectratio}{\input{figures/pdf/figure_5.pdf}
+%     }
+%     \caption{BER for QAM modulation w/ cyclic coding.\label{fig:qamcrc}}
+% \end{figure} \begin{figure} \centering
+% \adjustbox{width=\columnwidth,keepaspectratio}{\input{figures/pdf/figure_6.pdf}
+%     }
+%     \caption{BER for FSK modulation w/ cyclic coding.\label{fig:fskcrc}}
+% \end{figure}
+Exactly as predicted, the \(k=8\), \(n=4\) parameters do not provide any benefit,
+while \(k=10\) and \(n=2\) do provide significantly better error rates at the same
+SNR due to the error correction.
+
+\subsubsection{Convolutional codes}
+
+To use convolutional codes for encoding messages in MATLAB, it's easy to use the
+{\tt poly2trellis} function. It converts convolutional code polynomials to trellis
+description. The the function {\tt convenc} encodes the data. Since there is no
+trivial convolutional decoder, the function {\tt vitdec} provides a solution to
+decode this data using the Viterbi algorithm.
+
+Since there is no trivial way to design a specific convolutional encoder, I
+settled on MATLAB's own suggestions~\cite{polytrel}. These are structures for a
+1/2 Feedback Convolutional Encoder, a 2/3 Feedforward Convolutional Encoder and a
+1/2 Feedforward Convolutional Encoder. The diagrams of the first of the two are in
+figure~\ref{fig:convencs}.
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \includegraphics[width=\columnwidth]
+        {Tre12FeedbackConvEncoderExample}
+        \caption{1/2 Feedback Convolutional Encoder.}
+    \end{subfigure} \hfill
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \includegraphics[width=\columnwidth]
+        {Tre23FeedforwardConvEncoderExample} \caption{2/3 Feedforward
+            Convolutional Encoder}.
+    \end{subfigure}
+    \caption{Two of the convolutional encoders studied. Adapted
+        from~\cite{polytrel}.\label{fig:convencs}}
+\end{figure}
+
+The results are presented in figure~\ref{fig:resconv}. We see that in general we
+get improved performance regarding the BER by using these encoders. However, it's
+worth noting how the 2/3 feedforward convolutional encoder lags behind the
+theoretical curve for no correction. This means that for some particular values of
+SNR, the presence of this encoder makes thing worse. Also, funnily enough, we for
+some modulation orders in FSK, this same encoder can't reach a state of zero
+correction. I was not able to figure out the reasons behind this behaviour.
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{pdf/figure_7.pdf}
+        \caption{BER for PSK modulation w/ convolutional coding.
+            \label{fig:pskconv}}
+    \end{subfigure} \hfill
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{pdf/figure_9.pdf}
+        \caption{BER for FSK modulation w/ convolutional coding.
+            \label{fig:fskconv}}
+    \end{subfigure} \\
+    \begin{subfigure}[t]{\columnwidth}
+        \centering
+        \includegraphics[width=0.5\columnwidth]{pdf/figure_8.pdf}
+        \caption{BER for QAM modulation w/ convolutional coding.
+            \label{fig:qamconv}}
+    \end{subfigure}
+    \caption{Results for the convolutional encoder.\label{fig:resconv}}
+\end{figure}
+
+\subsubsection{All together}
+
+For the sake of comparison, figure~\ref{fig:rescomb} shows the combined results of
+both cyclic and convolutional encoding for each modulation. Results show how
+careful design is important: cyclic encoding can be both useless of better than
+the convolutional encoders studied. It all depends on the careful design and
+analysis of the systems, demonstrating the importance of this kind of exploratory
+work.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{pdf/figure_11.pdf}
+        \caption{BER for PSK modulation w/ different coding schemes.
+            \label{fig:pskcomb}}
+    \end{subfigure} \hfill
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{pdf/figure_13.pdf}
+        \caption{BER for FSK modulation w/ different coding schemes.
+            \label{fig:fskcomb}}
+    \end{subfigure} \\
+    \begin{subfigure}[t]{\columnwidth}
+        \centering
+        \includegraphics[width=0.5\columnwidth]{pdf/figure_12.pdf}
+        \caption{BER for QAM modulation w/ different coding schemes.
+            \label{fig:qamcomb}}
+    \end{subfigure}
+    \caption{Combined results for the different modulations.
+        \label{fig:rescomb}}
+\end{figure}
+
+\subsection{Exercise 3}
+
+In exercise 3, we shift the focus from AWGN channels to multipath channels. In
+particular, we are to look for the effect of intersymbol interference due to
+interference between paths on a multipath channel. For the sake of having a
+controlled experiment, I did not use any randomness in these simulations. What I
+did was to add a delayed version of the signal to itself before decoding, with a
+power adjustment. This power adjust is made enough for the effect of ISI to be
+visible but not enough to drown the receiver's SNR\@. The results are presented in
+figure~\ref{fig:delaysimp}. For scale, a symbol time is \SI{4}{\micro\second}. As
+a hint for the study of ODM, it's important to mention the \SI{0.8}{\micro\second}
+mark, as this coincides with the guard interval we are going to use. We see that
+all modulations suffer from intersymbol interference before this mark. It's also
+worth noting that this simulation only computes two paths. If one was to have the
+superposition of \(N\) paths, the plot would not have just those small zones of
+interference but basically show a flat erratic behaviour.
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{pdf/figure_mp_1.pdf}
+    \caption{BER in relation to excess time delay.\label{fig:delaysimp}}
+\end{figure}
+
+
+\subsection{Exercise 4}
+
+Now, in exercise 4, we shift the focus to OFDM modulation. The assignment give us
+parameters to implement this modem. However, MATLAB's OFDM function, like {\tt
+ofdmmod} do not take into themselves the notion of time, or a sampling frequency.
+So, I'll explain how this was implemented. I selected the number of subcarriers to
+be 64, with the first 6 and last 6 left as empty subcarriers. This complies with
+the requirement of 52 used subcarriers. At the same time, and referring to
+equation~\ref{eq:subspace}, if we take the symbol time to be
+\SI{3.2}{\micro\second} (this being the OFDM symbol duration minus the guard
+interval), it will immediately yield a subcarrier spacing of
+\SI{312.5}{\kilo\hertz}, and the required \SI{20}{\mega\hertz} of total bandwidth.
+Finally, since the FFT size of the {\tt ofdmmod} function will be 64, then, the
+required extra \SI{0.8}{\micro\second} of guard interval correspond to 16 extra
+samples, which is the parameter that the function takes. Finally, the relation
+between 64 samples and \SI{3.2}{\micro\second} indicates the need for a sampling
+rate of exactly \SI{20}{\mega\sample\per\second}. This makes the function that
+otherwise doesn't use any kind of frequency information specifically to comply
+with the requested parameters.
+
+The results for the excess time delay can be seen in figure~\ref{fig:delayofdm}.
+Notice that we can clearly observe that there is no errors up to
+\SI{0.8}{\micro\second} exactly, as predicted. For the sake of comparison,
+figure~\ref{fig:delaycomp} shows a comparison between using the modulations from
+previous exercises and using them on subcarriers of an OFDM signal. We can see the
+improvements in BER up to the guard interval period. Keep in mind the previous
+discussion on how the traditional plots would admittedly look worse for a channel
+with more than two paths being compared.
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{pdf/figure_mp_2.pdf}
+    \caption{BER in relation to excess time delay for OFDM modulation.
+        \label{fig:delayofdm}}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{pdf/figure_mp_3.pdf}
+    \caption{BER in relation to excess time delay, a comparison.
+        \label{fig:delaycomp}}
+\end{figure}
+
+\section{Conclusion}
+
+Different modulation schemes have different behaviours. It is very important to do
+a proper analysis of the channel conditions of the application and the necessary
+data throughput before making any decisions. OFDM modulation provides a good way
+to protect against channels that suffer from a multipath condition.
