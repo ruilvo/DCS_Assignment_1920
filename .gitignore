@@ -323,3 +323,7 @@ octave-workspace
 # Octave session info
 
 # End of https://www.gitignore.io/api/latex,matlab,octave
+
+# Folders I don't want
+scrap/**
+examples/**
